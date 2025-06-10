@@ -1,20 +1,21 @@
-import { useState } from "react";
-import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { format } from "date-fns";
-import { Users, UserPlus, Phone, User, LogIn, LogOut, CheckCircle } from "lucide-react";
+import { CheckCircle, LogIn, LogOut, Phone, User, UserPlus, Users } from "lucide-react";
+import { useForm } from "react-hook-form";
 
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/hooks/use-toast";
 import { apiRequest } from "@/lib/queryClient";
+import { InsertVisitor, insertVisitorSchema, Visitor } from "@/schema";
 
-import { insertVisitorSchema, type InsertVisitor, type Visitor } from "@shared/schema";
+// Update the import path below to the actual location of your schema file, for example:
+// Or create the file at ../lib/schema.ts if it does not exist.
 
 export default function VisitorManagement() {
   const { toast } = useToast();
