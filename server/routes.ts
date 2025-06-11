@@ -1,8 +1,8 @@
-import { insertVisitorSchema } from "@shared/schema";
 import type { Express } from "express";
 import { createServer, type Server } from "http";
+import { storage } from "./storage";
+import { insertVisitorSchema } from "@shared/schema";
 import { z } from "zod";
-import { storage } from "../server/storage";
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // Get all visitors
